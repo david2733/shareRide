@@ -71,6 +71,7 @@ venv/
 ENV/
 .envs/
 .ipython/
+.envs
 
 # Rope project settings
 .ropeproject
