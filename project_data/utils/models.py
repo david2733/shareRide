@@ -3,7 +3,7 @@
 from django.db import models
 
 
-class CRideModel(models.model):
+class CRideModel(models.Model):
     """Comparte Ride base model
 
     CRideModel acts as an abstract base class from which every

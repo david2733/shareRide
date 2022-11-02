@@ -9,7 +9,7 @@ from django.test import RequestFactory
 from django.urls import reverse
 
 from project_data.users.forms import UserAdminChangeForm
-from project_data.users.models import User
+from project_data.users.models.users import User
 from project_data.users.tests.factories import UserFactory
 from project_data.users.views import UserRedirectView, UserUpdateView, user_detail_view
 

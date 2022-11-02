@@ -1,6 +1,6 @@
 import pytest
 
-from project_data.users.models import User
+from project_data.users.models import users
 from project_data.users.tests.factories import UserFactory
 
 
@@ -10,5 +10,5 @@ def media_storage(settings, tmpdir):
 
 
 @pytest.fixture
-def user(db) -> User:
+def user(db) -> users:
     return UserFactory()
