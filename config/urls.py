@@ -10,6 +10,7 @@ from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
+    path('', include(('project_data.circles.urls', 'circles'), namespace='circle')),
     path(
         "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
     ),
@@ -26,6 +27,7 @@ if settings.DEBUG:
 
 # API URLS
 urlpatterns += [
+
     # API base url
     path("api/", include("config.api_router")),
     # DRF auth token

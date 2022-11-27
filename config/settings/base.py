@@ -53,7 +53,7 @@ ROOT_URLCONF = "config.urls"
 WSGI_APPLICATION = "config.wsgi.application"
 
 # Users and authentication
-AUTH_MODEL_USER = "Users.User"
+AUTH_USER_MODEL = "users.User"
 
 # APPS
 # ------------------------------------------------------------------------------
@@ -83,7 +83,8 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "project_data.users.apps.UsersConfig",
-    # Your stuff: custom apps go here
+    "project_data.circles.apps.CirclesConfig"
+
 ]
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
