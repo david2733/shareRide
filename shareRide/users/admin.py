@@ -2,11 +2,9 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from project_data.users.models import Profile, User
+from shareRide.users.models import Profile, User
 
 # from django.utils.translation import gettext_lazy as _
-
-# from project_data.users.forms import UserAdminChangeForm, UserAdminCreationForm
 
 
 class CustomUserAdmin(UserAdmin):

@@ -26,6 +26,6 @@ if __name__ == "__main__":
     # This allows easy placement of apps within the interior
     # project_data directory.
     current_path = Path(__file__).parent.resolve()
-    sys.path.append(str(current_path / "project_data"))
+    sys.path.append(str(current_path / "shareRide"))
 
     execute_from_command_line(sys.argv)

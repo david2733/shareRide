@@ -1,6 +1,6 @@
 from django.urls import reverse
 
-from project_data.users.models.users import User
+from shareRide.users.models.users import User
 
 
 class TestUserAdmin:

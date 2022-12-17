@@ -272,7 +272,7 @@ Session.vim
 tags
 
 ### Project template
-project_data/media/
+shareRide/media/
 
 .pytest_cache/
 .ipython/

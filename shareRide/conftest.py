@@ -1,7 +1,7 @@
 import pytest
 
-from project_data.users.models import users
-from project_data.users.tests.factories import UserFactory
+from shareRide.users.models import users
+from shareRide.users.tests.factories import UserFactory
 
 
 @pytest.fixture(autouse=True)

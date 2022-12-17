@@ -1,16 +1,16 @@
 version: '3'
 
 volumes:
-  project_data_local_postgres_data: {}
-  project_data_local_postgres_data_backups: {}
+  shareRide_local_postgres_data: {}
+  shareRide_local_postgres_data_backups: {}
 
 services:
   django: &django
     build:
       context: .
       dockerfile: ./compose/local/django/Dockerfile
-    image: project_data_local_django
-    container_name: project_data_local_django
+    image: shareRide_local_django
+    container_name: shareRide_local_django
     platform: linux/x86_64
     depends_on:
       - postgres
@@ -28,17 +28,17 @@ services:
     build:
       context: .
       dockerfile: ./compose/production/postgres/Dockerfile
-    image: project_data_production_postgres
-    container_name: project_data_local_postgres
+    image: shareRide_production_postgres
+    container_name: shareRide_local_postgres
     volumes:
-      - project_data_local_postgres_data:/var/lib/postgresql/data:Z
-      - project_data_local_postgres_data_backups:/backups:z
+      - shareRide_local_postgres_data:/var/lib/postgresql/data:Z
+      - shareRide_local_postgres_data_backups:/backups:z
     env_file:
       - ./.envs/.local/.postgres
 
   docs:
-    image: project_data_local_docs
-    container_name: project_data_local_docs
+    image: shareRide_local_docs
+    container_name: shareRide_local_docs
     platform: linux/x86_64
     build:
       context: .
@@ -48,19 +48,19 @@ services:
     volumes:
       - ./docs:/docs:z
       - ./config:/app/config:z
-      - ./project_data:/app/project_data:z
+      - ./shareRide:/app/shareRide:z
     ports:
       - "9000:9000"
     command: /start-docs
 
   redis:
     image: redis:6
-    container_name: project_data_local_redis
+    container_name: shareRide_local_redis
 
   celeryworker:
     <<: *django
-    image: project_data_local_celeryworker
-    container_name: project_data_local_celeryworker
+    image: shareRide_local_celeryworker
+    container_name: shareRide_local_celeryworker
     depends_on:
       - redis
       - postgres
@@ -69,8 +69,8 @@ services:
 
   celerybeat:
     <<: *django
-    image: project_data_local_celerybeat
-    container_name: project_data_local_celerybeat
+    image: shareRide_local_celerybeat
+    container_name: shareRide_local_celerybeat
     depends_on:
       - redis
       - postgres
@@ -79,8 +79,8 @@ services:
 
   flower:
     <<: *django
-    image: project_data_local_flower
-    container_name: project_data_local_flower
+    image: shareRide_local_flower
+    container_name: shareRide_local_flower
     ports:
       - "5555:5555"
     command: /start-flower

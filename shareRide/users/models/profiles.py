@@ -4,7 +4,7 @@
 from django.db import models
 
 # Utilities
-from project_data.utils.models import CRideModel
+from shareRide.utils.models import CRideModel
 
 
 class Profile(CRideModel):

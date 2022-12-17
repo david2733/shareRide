@@ -6,8 +6,8 @@ from pathlib import Path
 import environ
 
 ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
-# project_data/
-APPS_DIR = ROOT_DIR / "project_data"
+# shareRide/
+APPS_DIR = ROOT_DIR / "shareRide"
 env = environ.Env()
 
 READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
@@ -82,8 +82,8 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    "project_data.users.apps.UsersConfig",
-    "project_data.circles.apps.CirclesConfig"
+    "shareRide.users.apps.UsersConfig",
+    "shareRide.circles.apps.CirclesConfig"
 
 ]
 
@@ -95,7 +95,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # MIGRATIONS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#migration-modules
-MIGRATION_MODULES = {"sites": "project_data.contrib.sites.migrations"}
+MIGRATION_MODULES = {"sites": "shareRide.contrib.sites.migrations"}
 
 # AUTHENTICATION
 # ------------------------------------------------------------------------------
@@ -191,7 +191,7 @@ TEMPLATES = [
                 "django.template.context_processors.static",
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
-                "project_data.users.context_processors.allauth_settings",
+                "shareRide.users.context_processors.allauth_settings",
             ],
         },
     }
@@ -298,13 +298,13 @@ ACCOUNT_EMAIL_REQUIRED = True
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_EMAIL_VERIFICATION = "none"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-ACCOUNT_ADAPTER = "project_data.users.adapters.AccountAdapter"
+ACCOUNT_ADAPTER = "shareRide.users.adapters.AccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/forms.html
-ACCOUNT_FORMS = {"signup": "project_data.users.forms.UserSignupForm"}
+ACCOUNT_FORMS = {"signup": "shareRide.users.forms.UserSignupForm"}
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-SOCIALACCOUNT_ADAPTER = "project_data.users.adapters.SocialAccountAdapter"
+SOCIALACCOUNT_ADAPTER = "shareRide.users.adapters.SocialAccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/forms.html
-SOCIALACCOUNT_FORMS = {"signup": "project_data.users.forms.UserSocialSignupForm"}
+SOCIALACCOUNT_FORMS = {"signup": "shareRide.users.forms.UserSocialSignupForm"}
 
 # django-rest-framework
 # -------------------------------------------------------------------------------
@@ -314,8 +314,10 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
     ),
-    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.AllowAny",),
+    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    "DEFAULT_PAGINATION_CLASS": 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE':5
 }
 
 # django-cors-headers - https://github.com/adamchainz/django-cors-headers#setup
@@ -324,8 +326,8 @@ CORS_URLS_REGEX = r"^/api/.*$"
 # By Default swagger ui is available only to admin user(s). You can change permission classes to change that
 # See more configuration options at https://drf-spectacular.readthedocs.io/en/latest/settings.html#settings
 SPECTACULAR_SETTINGS = {
-    "TITLE": "project_data API",
-    "DESCRIPTION": "Documentation of API endpoints of project_data",
+    "TITLE": "shareRide API",
+    "DESCRIPTION": "Documentation of API endpoints of shareRide",
     "VERSION": "1.0.0",
     "SERVE_PERMISSIONS": ["rest_framework.permissions.IsAdminUser"],
     "SERVERS": [

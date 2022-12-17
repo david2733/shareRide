@@ -4,7 +4,7 @@
 from django.contrib import admin
 
 # Model
-from project_data.circles.models.circles import Circle
+from shareRide.circles.models.circles import Circle
 
 
 @admin.register(Circle)

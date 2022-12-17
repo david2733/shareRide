@@ -2,7 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.core.validators import RegexValidator
 from django.db import models
 
-from project_data.utils.models import CRideModel
+from shareRide.utils.models import CRideModel
 
 # from django.urls import reverse
 # from django.utils.translation import gettext_lazy as _

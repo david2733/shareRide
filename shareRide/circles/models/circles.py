@@ -3,7 +3,7 @@
 # Django
 from django.db import models
 
-from project_data.utils.models import CRideModel
+from shareRide.utils.models import CRideModel
 
 
 class Circle(CRideModel):
